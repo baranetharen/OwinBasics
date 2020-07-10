@@ -1,0 +1,34 @@
+﻿@inherits System.Web.Mvc.WebViewPage<Owin.Basics.Model.LoginViewModel>
+@using System.Web.Mvc.Html;
+
+<h2>Login</h2>
+
+<div>
+    <fieldset>
+        <legend>Login Form</legend>
+        <div>
+            @Html.BeginForm()
+            {
+            <div>
+                @Html.LabelFor(x => x.UserName);
+                @Html.EditorFor(x => x.UserName);
+                @Html.ValidationMessageFor(x => x.UserName);
+            </div>
+            <div>
+                @Html.LabelFor(x => x.Password);
+                @Html.EditorFor(x => x.Password);
+                @Html.ValidationMessageFor(x => x.Password);
+            </div>
+            <p>
+                <input type="submit" name="Submit" />
+            </p>
+            }
+            <div>
+                @foreach (var auth in Model.AuthProviders)
+                {
+                    @Html.ActionLink("Auth for :"+auth.Caption ,"SocialLogin",new  {id =auth.AuthenticationType })
+                }
+            </div>
+        </div>
+    </fieldset>
+</div>

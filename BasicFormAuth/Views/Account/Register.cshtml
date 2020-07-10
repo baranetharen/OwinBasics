@@ -1,0 +1,25 @@
+﻿@model BasicFormAuth.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div style="width:350px;margin: 0px auto;padding:15px;border:" 1px solid black">
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.LabelFor(x => x.UserName)
+        @Html.EditorFor(x => x.UserName)
+        @Html.ValidationMessageFor(x => x.UserName)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.Password)
+        @Html.EditorFor(x => x.Password)
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <p>
+        <input type="submit" name="Submit" />
+    </p>
+    }
+</div>
