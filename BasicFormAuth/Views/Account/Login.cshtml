@@ -1,0 +1,51 @@
+﻿@model BasicFormAuth.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div style="width:350px;margin: 0px auto;padding:15px;border:" 1px solid black">
+    @using (Html.BeginForm(method: FormMethod.Post, actionName: "Login", controllerName: "Account"))
+    {
+        @Html.AntiForgeryToken();
+        <table>
+
+            <tbody>
+                <tr>
+                    <td style="margin-right:5px">
+                        @Html.LabelFor(x => x.UserName)
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => x.UserName)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.UserName)
+                    </td>
+                </tr>
+                <tr style="margin-top:10px">
+                    <td>
+                        @Html.LabelFor(x => x.Password)
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => x.Password)
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(x => x.Password)
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="margin-top:10px">
+                    <td>
+                        <input style="float:left" type="submit" name="Submit" />
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+    <div style="clear:both"></div>
+    @Html.ValidationSummary();
+    <div>
+        <a href="/Account/Register">Click Here to Register</a>
+    </div>
+</div>
